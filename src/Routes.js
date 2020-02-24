@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./Home/Home";
-import Books from "./Books/Books";
-import Authors from "./Authors/Authors";
+import Home from "./home/Home";
+import Books from "./books/Books";
+import Authors from "./authors/Authors";
 
 export default function Routes(){
     return (
