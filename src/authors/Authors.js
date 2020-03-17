@@ -1,26 +1,20 @@
-import React, { Component } from "react";
-import "./Authors.css";
-import { AuthorDisplay } from "./AuthorDisplay.js";
+import React, {useEffect, useState} from "react";
+import { AuthorDisplay } from "./AuthorDisplay.js"
 
-export default class Authors extends Component {
-    constructor(props){
-    super(props);
-    this.state = {
-        authors: [
-            {author: "Mik Kersten"},
-            {author: "Ayn Rand"},
-            {author: "Adam Sandler"},
-            {author: "J.K. Rowlings"}      
-        ]
-    }
-}
-render(){
+export default function Authors(props)
+{
+    const [data,setData] = useState([]);
+    useEffect(()=>
+    {
+        fetch("https://localhost:5001/api/authors/")
+        .then(response => response.json())
+        .then(data => setData(data));
+    },[]);
     return (
-        <div className="authors">
+        <div className="Authors">
             <div className="lander">
-                <AuthorDisplay authors={this.state.authors}  />
+                <AuthorDisplay authors={data}  />
             </div>
         </div>
-    )
-}
+    );
 }
